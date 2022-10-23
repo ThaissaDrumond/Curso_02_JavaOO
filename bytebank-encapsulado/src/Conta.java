@@ -4,7 +4,8 @@ public class Conta {
     private int agencia;
     private int numero;
     private Cliente titular; // atributos da instancia, do objeto
-    private static int total;  //static - atributo da classe: todo atributo static é um atributo da classe
+    private static int total;  /*static - atributo da classe: todo atributo static é um atributo da classe. atributos
+     "static" tem comportamento global*/
 
     public Conta(int agencia, int numero){
         Conta.total++; //por estar usando um atributo da classe, não se pode usar o "this", deve usar o nome da classe
@@ -13,7 +14,7 @@ public class Conta {
         this.numero = numero;
         System.out.println("Criando uma conta " + this.numero);
 
-    } /* Construtor da Conta
+    } /* Construtor da Conta: não possui retorno(não é void, double, boolean, etc..), é uma rotina de inicialização
             Se no código não se cria um construtor, o Java usa o construtor padrão, que seria um contrutor "vazio" que
         não faz nada basicamente nada.
             Ao criar um construtor, é estabelecida a rotina de inicialização de uma nova instancia de objeto. É executado
@@ -21,7 +22,7 @@ public class Conta {
         Não tem como executar mais de uma vez para o mesmo objeto, sempre cria um novo objeto
             Os parametros de um construtor "obrigam" que sejam informados os "valores" daqueles atributos definidos como
         parametros. Neste exemplo, ao criar uma nova conta,é obrigatório informar a agencia e número
-            Os parametros variam conforme a regra de negócio. */
+            Os parametros variam conforme a regra de negócio, definindo restrições de criação de objetos*/
     void deposita(double valor) {
         this.saldo = this.saldo + valor;
 
@@ -90,6 +91,7 @@ public class Conta {
         /*System.out.println(this.saldo); --- Dentro de um método estático, não se pode  acessar atributos de instancia.
         Métodos estáticos podem acessar somente atributos estáticos */
         return Conta.total;
-    } // Por ser um get de um atributo da classe, tem que ser declarado como static também.
+    } /* Por ser um get de um atributo da classe, tem que ser declarado como static também. Não existe "this" em metodos
+    static, pois são da classe e não da instancia/objeto */
 
 }
